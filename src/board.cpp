@@ -12,6 +12,10 @@ bool Board::makeMove(int row, int col, char symbol) {
     return true;
 }
 
+void Board::undoMove(int row, int col) {
+    grid[row][col] = ' ';
+}
+
 bool Board::isFull() const {
     for (int i = 0; i < BOARD_SIZE; i++) {
         for (int j = 0; j < BOARD_SIZE; j++) {
@@ -84,4 +88,8 @@ void Board::display() const {
         }
     }
     std::cout << std::endl << "+---+---+---+" << std::endl << std::endl;
+}
+
+char  Board::getCell(int row, int col) const {
+    return grid[row][col];
 }

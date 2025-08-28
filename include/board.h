@@ -14,10 +14,13 @@ class Board {
     public:
         Board();
         bool makeMove(int row, int col, char symbol);
+        void undoMove(int row, int col);
+
         bool isFull() const;
         bool winPossibility() const;
         char checkWinner() const;
         void display() const;
+        char getCell(int row, int col) const;
 };
 
 #endif

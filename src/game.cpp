@@ -15,17 +15,8 @@ void Game::play() {
     board.display();
     while(true) {
         std::pair<int, int> current_move;
-
-        while(true) {
-            current_move = current->getMove(board);
-            /*if (!board.makeMove(current_move.first, current_move.second, current->getSymbol())) {
-                std::cout << "Invalid move" << std::endl;
-                board.display();
-                continue;
-            }*/
-            break;
-        } 
-        
+        current_move = current->getMove(board);
+            
         board.display();
 
         char winner = board.checkWinner();

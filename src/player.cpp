@@ -1,4 +1,5 @@
 #include "player.h"
+#include "ai.h"
 
 Player::Player(char sym) : symbol(sym) {}
 HumanPlayer::HumanPlayer(char sym) : Player(sym) {}
@@ -27,15 +28,8 @@ std::pair<int,int> HumanPlayer::getMove(Board &board) {
 }
 
 std::pair<int,int> AIPlayer::getMove(Board & board) {
-    std::srand(std::time(nullptr));
-    int row, col;
-
-    while(true) {
-        row = std::rand() % BOARD_SIZE;
-        col = std::rand() % BOARD_SIZE;
-        if (board.makeMove(row, col, symbol)) {
-            std::cout << "AI " << symbol << " moves: " << row << "," << col << std::endl;
-            return {row, col};
-        }
-    }
+    std::pair<int,int> move = findBestMove(board, symbol);
+    board.makeMove(move.first, move.second, symbol);
+    std::cout << "AI " << symbol << " moves: " << move.first << "," << move.second << std::endl;
+    return move;
 }
