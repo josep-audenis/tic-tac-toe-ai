@@ -12,20 +12,22 @@ PYBIND11_MODULE(tictactoe, m) {
 
     py::class_<Board>(m, "Board")
         .def(py::init<>())
-        .def("makeMove", &Board::makeMove)
-        .def("isFull", &Board::isFull)
-        .def("checkWinner", &Board::checkWinner)
+        .def("make_move", &Board::makeMove)
+        .def("is_full", &Board::isFull)
+        .def("check_winner", &Board::checkWinner)
         .def("display", &Board::display)
-        .def("getCell", &Board::getCell)
-        .def("undoMove", &Board::undoMove);
+        .def("get_cell", &Board::getCell)
+        .def("undo_move", &Board::undoMove);
 
-    py::class_<HumanPlayer>(m, "HumanPlayer")
+    py::class_<Player>(m, "Player");
+    
+    py::class_<HumanPlayer, Player>(m, "HumanPlayer")
         .def(py::init<char>())
-        .def("getSymbol", &HumanPlayer::getSymbol);
+        .def("get_symbol", &HumanPlayer::getSymbol);
 
-    py::class_<AIPlayer>(m, "AIPlayer")
+    py::class_<AIPlayer, Player>(m, "AIPlayer")
         .def(py::init<char>())
-        .def("getMove", &AIPlayer::getMove);
+        .def("get_move", &AIPlayer::getMove);
 
     py::class_<Game>(m, "Game")
         .def(py::init<Player*, Player*>())

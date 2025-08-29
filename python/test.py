@@ -5,6 +5,9 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "b
 
 import tictactoe
 
-b = tictactoe.Board()
-b.makeMove(0,0, "X")
-b.display()
+
+p1 = tictactoe.HumanPlayer("X")
+p2 = tictactoe.AIPlayer("O")
+game = tictactoe.Game(p1, p2)
+
+game.play()

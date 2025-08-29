@@ -4,6 +4,10 @@
 
 build/
 
+!*.py
+!*.pyi
+
+
 # Prerequisites
 *.d
 

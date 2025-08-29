@@ -15,7 +15,7 @@ void Game::play() {
     board.display();
     while(true) {
         std::pair<int, int> current_move;
-        current_move = current->getMove(board);
+        current_move = current->getMove(board, true);
             
         board.display();
 

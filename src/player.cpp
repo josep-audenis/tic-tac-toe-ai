@@ -9,7 +9,7 @@ char Player::getSymbol() const {
     return symbol;
 }
 
-std::pair<int,int> HumanPlayer::getMove(Board &board) {
+std::pair<int,int> HumanPlayer::getMove(Board &board, bool terminal) {
     int row, col;
 
     while(true) {
@@ -27,9 +27,11 @@ std::pair<int,int> HumanPlayer::getMove(Board &board) {
     }
 }
 
-std::pair<int,int> AIPlayer::getMove(Board & board) {
+std::pair<int,int> AIPlayer::getMove(Board & board, bool terminal = false) {
     std::pair<int,int> move = findBestMove(board, symbol);
     board.makeMove(move.first, move.second, symbol);
-    std::cout << "AI " << symbol << " moves: " << move.first << "," << move.second << std::endl;
+    if (terminal) {
+        std::cout << "AI " << symbol << " moves: " << move.first << "," << move.second << std::endl;
+    }
     return move;
 }
