@@ -19,7 +19,6 @@ int minmax(Board &board, int depth, bool is_maximizing, char ai_symbol, char hum
                 if (board.getCell(row, col) == ' ') {
                     board.makeMove(row, col, ai_symbol);
                     int score = minmax(board, depth + 1, false, ai_symbol, human_symbol, alpha, beta);
-
                     board.undoMove(row, col);
                     best_score = std::max(best_score, score);
                     alpha = std::max(alpha, best_score);
